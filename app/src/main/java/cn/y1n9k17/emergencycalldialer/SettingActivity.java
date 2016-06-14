@@ -17,11 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Set;
+
 public class SettingActivity extends AppCompatActivity {
 
     private EditText phonenum;
     private EditText smstext;
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACT = 3;
+    private static final int MY_INTENT_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +76,15 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button initButton = (Button)findViewById(R.id.button10);
-        initButton.setOnClickListener(new View.OnClickListener() {
+        Button aboutButton = (Button)findViewById(R.id.button3);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edit.clear();
-                if(edit.commit()){
-                    Toast.makeText(SettingActivity.this, "数据清理完成！", Toast.LENGTH_LONG).show();
-                }
+                Intent intent = new Intent();
+                intent.setClass(SettingActivity.this, aboutActivity.class);
+                intent.putExtra("phone", phonenum.getText().toString());
+                intent.putExtra("sms", smstext.getText().toString());
+                startActivityForResult(intent,MY_INTENT_REQUEST_CODE);
             }
         });
     }
@@ -97,11 +101,16 @@ public class SettingActivity extends AppCompatActivity {
                 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
                 cursor.moveToFirst();
                 String number = cursor.getString(cursor.getColumnIndexOrThrow(Contacts.Phones.NUMBER));
-                //Log.d(TAG, "number"+number);
                 System.out.println("number:"+number);
                 phonenum.setText(number);
                 phonenum.setSelection(number.length());
                 break;
+            case(MY_INTENT_REQUEST_CODE):
+                if(resultCode == aboutActivity.RESULT_CODE){
+                    Bundle bundle = data.getExtras();
+                    String str = bundle.getString("backmsg");
+                    Toast.makeText(SettingActivity.this, str, Toast.LENGTH_LONG).show();
+                }
             default:
                 break;
         }
@@ -123,6 +132,7 @@ public class SettingActivity extends AppCompatActivity {
         if(requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACT){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 //TODO:DO SOMETHING
+                chooseContact();
             } else {
                 //Permission Denied
                 Toast.makeText(SettingActivity.this, "授权拒绝。\n请到设置->应用程序中打开对应权限。", Toast.LENGTH_LONG).show();
