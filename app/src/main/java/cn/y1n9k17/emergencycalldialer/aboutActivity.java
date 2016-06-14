@@ -65,7 +65,7 @@ public class aboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("https://github.com/yingkittse");
-                Intent sintent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent sintent = new Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(sintent);
                 STINGERFLAG = 1;
             }

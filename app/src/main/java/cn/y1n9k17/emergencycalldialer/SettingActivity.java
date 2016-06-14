@@ -39,7 +39,7 @@ public class SettingActivity extends AppCompatActivity {
         settingbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setClass(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -80,7 +80,7 @@ public class SettingActivity extends AppCompatActivity {
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setClass(SettingActivity.this, aboutActivity.class);
                 intent.putExtra("phone", phonenum.getText().toString());
                 intent.putExtra("sms", smstext.getText().toString());
@@ -121,7 +121,7 @@ public class SettingActivity extends AppCompatActivity {
         {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},MY_PERMISSIONS_REQUEST_READ_CONTACT );
         }else {
-            Intent i = new Intent(Intent.ACTION_PICK);
+            Intent i = new Intent(Intent.ACTION_PICK).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setType("vnd.android.cursor.dir/phone");
             startActivityForResult(i, 0);
         }

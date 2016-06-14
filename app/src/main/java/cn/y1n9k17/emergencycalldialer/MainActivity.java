@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.exit(0);
+                //finish();
             }
         });
 
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void intentjump(){
-        Intent intent = new Intent();
+        Intent intent = new Intent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setClass(MainActivity.this, SettingActivity.class);
         startActivity(intent);
     }
