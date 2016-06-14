@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:text="电话求助"
         android:id="@+id/button4"
-        android:layout_marginTop="98dp"
+        android:textSize="70dp"
+        android:layout_marginTop="29dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -39,8 +40,9 @@
         android:layout_height="wrap_content"
         android:text="短信告警"
         android:id="@+id/button5"
-        android:layout_marginTop="103dp"
+        android:textSize="70dp"
         android:layout_below="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+        android:layout_alignStart="@+id/button4"
+        android:layout_marginTop="78dp" />
 
 </RelativeLayout>
