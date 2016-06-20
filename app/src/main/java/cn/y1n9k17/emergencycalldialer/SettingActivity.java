@@ -1,7 +1,6 @@
 package cn.y1n9k17.emergencycalldialer;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Set;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -30,7 +28,6 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        //System.out.println("Setting onCreate");
 
         SharedPreferences spf = getSharedPreferences("phonesmsinfo", MODE_PRIVATE);
         final SharedPreferences.Editor edit = spf.edit();
@@ -39,9 +36,12 @@ public class SettingActivity extends AppCompatActivity {
         settingbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*******
                 Intent intent = new Intent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setClass(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
+                //finish();
+                 ******/
                 finish();
             }
         });
