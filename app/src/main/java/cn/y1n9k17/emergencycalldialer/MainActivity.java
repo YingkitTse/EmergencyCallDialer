@@ -147,9 +147,11 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     break;
             }
+            //return;
         }else {
             //Permission Denied
             Toast.makeText(MainActivity.this, "授权拒绝。\\n请到设置->应用程序中打开对应权限。", Toast.LENGTH_LONG).show();
+            //return;
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
