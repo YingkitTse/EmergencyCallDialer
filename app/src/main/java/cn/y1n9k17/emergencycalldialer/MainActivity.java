@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             gphonenum = spf.getString("phone", "10010");
             gsms = spf.getString("sms", "cxll");
         }
-
         Button settingButton = (Button) findViewById(R.id.button);
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 intentjump();
             }
         });
-
         Button exitButton = (Button) findViewById(R.id.button2);
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
-
         Button smsButton = (Button) findViewById(R.id.button5);
         smsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         Button dialButton = (Button) findViewById(R.id.button4);
         dialButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,30 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
-        /*******
-        if(requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE)
-        {
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
-                makeCall();
-            } else {
-                //Permission Denied
-                Toast.makeText(MainActivity.this, "授权拒绝。\n请到设置->应用程序中打开对应权限。", Toast.LENGTH_LONG).show();
-            }
-            return;
-        }
-        if(requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS)
-        {
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
-                sendSMS();
-            } else {
-                //Permission Denied
-                Toast.makeText(MainActivity.this, "授权拒绝。\n请到设置->应用程序中打开对应权限。", Toast.LENGTH_LONG).show();
-            }
-            return;
-        }
-         *******/
         if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
         {
             switch (requestCode) {
@@ -147,11 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     break;
             }
-            //return;
         }else {
             //Permission Denied
             Toast.makeText(MainActivity.this, "授权拒绝。\\n请到设置->应用程序中打开对应权限。", Toast.LENGTH_LONG).show();
-            //return;
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }

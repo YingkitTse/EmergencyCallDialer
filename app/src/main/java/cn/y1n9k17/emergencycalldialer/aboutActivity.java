@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class aboutActivity extends AppCompatActivity {
 
     public final static int RESULT_CODE = 1;
@@ -25,13 +23,10 @@ public class aboutActivity extends AppCompatActivity {
 
         SharedPreferences spf = getSharedPreferences("phonesmsinfo", MODE_PRIVATE);
         final SharedPreferences.Editor edit = spf.edit();
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-
         String phonenum = bundle.getString("phone");
         String smstext = bundle.getString("sms");
-
         TextView stingerView = (TextView)findViewById(R.id.textView6);
         stingerView.setMovementMethod(ScrollingMovementMethod.getInstance());
         stingerView.setText("设定的电话号码为："+phonenum+"\n预设短信内容为："+smstext);
@@ -49,7 +44,6 @@ public class aboutActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         Button initButton = (Button)findViewById(R.id.button11);
         initButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +54,6 @@ public class aboutActivity extends AppCompatActivity {
                 }
             }
         });
-
         TextView stingerButton = (TextView)findViewById(R.id.textView5);
         stingerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +64,5 @@ public class aboutActivity extends AppCompatActivity {
                 STINGERFLAG = 1;
             }
         });
-
-
-
     }
 }

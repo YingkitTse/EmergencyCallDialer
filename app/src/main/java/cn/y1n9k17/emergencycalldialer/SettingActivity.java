@@ -31,21 +31,13 @@ public class SettingActivity extends AppCompatActivity {
 
         SharedPreferences spf = getSharedPreferences("phonesmsinfo", MODE_PRIVATE);
         final SharedPreferences.Editor edit = spf.edit();
-
         Button settingbackButton = (Button)findViewById(R.id.button6);
         settingbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*******
-                Intent intent = new Intent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.setClass(SettingActivity.this, MainActivity.class);
-                startActivity(intent);
-                //finish();
-                 ******/
                 finish();
             }
         });
-
         phonenum = (EditText)findViewById(R.id.editText);
         smstext = (EditText)findViewById(R.id.editText2);
         if(!spf.contains("phone") || spf.getString("phone", null) == "") {
@@ -55,7 +47,6 @@ public class SettingActivity extends AppCompatActivity {
             phonenum.setText(spf.getString("phone", null));
             smstext.setText(spf.getString("sms", null));
         }
-
         Button mChooseContactButton = (Button)findViewById(R.id.button8);
         mChooseContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +54,6 @@ public class SettingActivity extends AppCompatActivity {
                 chooseContact();
             }
         });
-
         Button saveButton = (Button)findViewById(R.id.button7);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +65,6 @@ public class SettingActivity extends AppCompatActivity {
                 }
             }
         });
-
         Button aboutButton = (Button)findViewById(R.id.button3);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
